@@ -3,7 +3,23 @@ const elWrapper = document.querySelector(".wrapper")
 
 
 const API_URL = "https://fakestoreapi.com/users"
+const elLoading = document.querySelector(".loading") 
+const elSkeleton = document.querySelector(".skeleton")   
 
+function createSkeleton(){
+    const paket = document.createDocumentFragment()
+    for(let i = 0; i < 10; i++){
+        const div  = document.createElement("div")
+        div.classList.add("skeleton__item")
+        div.innerHTML = `
+         <div class="skeleton__line skeleton__animation"></div>
+         <div class="skeleton__line skeleton__animation"></div>
+         <div class="skeleton__line skeleton__animation"></div> 
+        `
+        paket.appendChild(div)
+    }
+    elSkeleton.appendChild(paket)
+}
 
 
 function fetchDate(){
@@ -17,11 +33,14 @@ function fetchDate(){
     .catch((err) => {
         console.log(err);
     })
-    .finally()    
+    .finally(() => {
+        elLoading.style.display = "none"
+    })    
     
 }
 
 window.addEventListener("load",() => {
+    createSkeleton()
     fetchDate()
 })
 

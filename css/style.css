@@ -4,16 +4,19 @@
     box-sizing: border-box;
 }
 
-.wrapper{
+.wrapper,
+.skeleton{
     max-width: 1200px;
     width: 100%;
     margin: 20px auto;
     display: flex;
     gap: 15px;
     flex-wrap: wrap ;
+    justify-content: center;
 }
 
-.card{
+.card,
+.skeleton__item{
     width: 300px;
     border: 1px solid #ddd;
     padding: 12px;
@@ -24,6 +27,33 @@
 .card:hover{
     box-shadow: 0 25px 50px -12px rgba(128, 5, 5, 0.25);
 }
+
+.skeleton__line{
+    width: 80%;
+    height: 20px;
+    margin-top: 5px;
+    border-radius: 20px;
+}
+.skeleton__line:last-child{
+    width: 70%;
+}
+.skeleton__line:first-child{
+    width: 100%;
+}
+
+.skeleton__animation{
+    background:linear-gradient(90deg, #ccc, #ddd, #ccc);
+    animation:skeletonAnimation 1s linear  infinite ;
+    background-size: 200%;
+}
+@keyframes skeletonAnimation{
+    to{
+        background-position: 200%;
+    }
+}
+
+
+
 
 
 
